@@ -1,41 +1,52 @@
-import { useReducer } from "react";
 import {
+  //==========add for redux=======
+  ADD_PRODUCT,
+  REMOVE_PRODUCT,
+  //==========add for redux=======
   UPDATE_PRODUCTS,
+  ADD_TO_CART,
+  UPDATE_CART_QUANTITY,
+  REMOVE_FROM_CART,
+  ADD_MULTIPLE_TO_CART,
   UPDATE_CATEGORIES,
   UPDATE_CURRENT_CATEGORY,
-  ADD_TO_CART,
-  ADD_MULTIPLE_TO_CART,
-  REMOVE_FROM_CART,
-  UPDATE_CART_QUANTITY,
   CLEAR_CART,
   TOGGLE_CART
 } from "./actions";
 
-export const reducer = (state, action) => {
+const initialState = {
+  products: [],
+  cart: [],
+  cartOpen: false,
+  categories: [],
+  currentCategory: '',
+}
+
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case UPDATE_PRODUCTS:
       return {
         ...state,
         products: [...action.products],
       };
+    //=====add redux====
+    // case ADD_PRODUCT:
+    //   return {
+    //     ...state,
+    //     products: [...state.products, action.payload],
+    //   };
 
-    case UPDATE_CATEGORIES:
-      return {
-        ...state,
-        categories: [...action.categories],
-      };
-
-    case UPDATE_CURRENT_CATEGORY:
-      return {
-        ...state,
-        currentCategory: action.currentCategory
-      };
-
+    // case REMOVE_PRODUCT:
+    //   return {
+    //     ...state,
+    //     product: state.products.filter((product) => product.id !== action.payload)
+    //   };
+    //=====add redux======
     case ADD_TO_CART:
       return {
         ...state,
         cartOpen: true,
-        cart: [...state.cart, action.product]
+        cart: [...state.cart, action.product],
       };
 
     case ADD_MULTIPLE_TO_CART:
@@ -44,26 +55,27 @@ export const reducer = (state, action) => {
         cart: [...state.cart, ...action.products],
       };
 
-    case REMOVE_FROM_CART:
-      let newState = state.cart.filter(product => {
-        return product._id !== action._id;
-      });
-      return {
-        ...state,
-        cartOpen: newState.length > 0,
-        cart: newState
-      };
-
     case UPDATE_CART_QUANTITY:
       return {
         ...state,
         cartOpen: true,
         cart: state.cart.map(product => {
           if (action._id === product._id) {
-            product.purchaseQuantity = action.purchaseQuantity;
+            product.purchaseQuantity = action.purchaseQuantity
           }
-          return product;
+          return product
         })
+      };
+
+    case REMOVE_FROM_CART:
+      let newState = state.cart.filter(product => {
+        return product._id !== action._id;
+      });
+
+      return {
+        ...state,
+        cartOpen: newState.length > 0,
+        cart: newState
       };
 
     case CLEAR_CART:
@@ -79,11 +91,21 @@ export const reducer = (state, action) => {
         cartOpen: !state.cartOpen
       };
 
+    case UPDATE_CATEGORIES:
+      return {
+        ...state,
+        categories: [...action.categories],
+      };
+
+    case UPDATE_CURRENT_CATEGORY:
+      return {
+        ...state,
+        currentCategory: action.currentCategory
+      }
+
     default:
       return state;
   }
 };
 
-export function useProductReducer(initialState) {
-  return useReducer(reducer, initialState)
-}
+export default reducer;

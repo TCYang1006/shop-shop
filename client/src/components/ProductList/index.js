@@ -1,15 +1,20 @@
 import React, { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { idbPromise } from '../../utils/helpers';
 import ProductItem from '../ProductItem';
-import { useStoreContext } from '../../utils/GlobalState';
+//import { useStoreContext } from '../../utils/GlobalState';
 import { UPDATE_PRODUCTS } from '../../utils/actions';
 import { QUERY_PRODUCTS } from '../../utils/queries';
 import spinner from '../../assets/spinner.gif';
 
 function ProductList() {
-  const [state, dispatch] = useStoreContext();
+  //========add redux=======
+  //const [state, dispatch] = useStoreContext();
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+  //=====add redux======
 
   const { currentCategory } = state;
 
@@ -23,7 +28,7 @@ function ProductList() {
         type: UPDATE_PRODUCTS,
         products: data.products,
       });
-      //but let's also take each product and save it to IndexdDB using the helper function
+      //but let's also take each product and save it to IndexedDB using the helper function
       data.products.forEach((product) => {
         idbPromise('products', 'put', product);
       });
