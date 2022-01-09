@@ -1,2 +1,1 @@
-web: npm start develop
-worker: npm start develop
+web: node ./server/server.js
