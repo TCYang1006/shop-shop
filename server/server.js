@@ -37,7 +37,6 @@ app.get('*', (req, res) => {
   } else {
     res.sendFile(path.join(__dirname, '../client/public/index.html'));
   }
-
 });
 
 db.once('open', () => {
