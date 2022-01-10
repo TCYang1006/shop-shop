@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/mernshopping', {
+mongoose.connect("mongodb+srv://tcknyaj:01Elletc!@cluster0.ylckf.mongodb.net/mernshopping?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
@@ -8,3 +8,4 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/mernshopping', 
 });
 
 module.exports = mongoose.connection;
+
