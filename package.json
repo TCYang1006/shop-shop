@@ -1,9 +1,8 @@
 {
-  "homepage": "https://tcyang1006.github.io/shop-shop",
+  "homepage": "https://shrouded-beyond-32475.herokuapp.com/",
   "name": "mern-shopping",
   "version": "1.0.0",
   "description": "",
-  "proxy": "http://localhost:3001/",
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",

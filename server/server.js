@@ -40,8 +40,9 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/public/index.html'));
   }
 });
-
-db.connect(process.env.MONGODB_URI, {
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://tcknyaj:01Elletc!@cluster0.ylckf.mongodb.net/mernshopping?retryWrites=true&w=majority';
+console.log("MONGODB_URI: ", MONGODB_URI);
+db.connect(`${MONGODB_URI}`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
