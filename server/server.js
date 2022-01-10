@@ -4,7 +4,9 @@ const path = require('path');
 
 const { typeDefs, resolvers } = require('./schemas');
 const { authMiddleware } = require('./utils/auth');
-const db = require('./config/connection');
+//const db = require('./config/connection');
+const db = require('mongoose');
+
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -23,7 +25,7 @@ app.use(express.json());
 if (process.env.NODE_ENV === 'production') {
   app.use('/images', express.static(path.join(__dirname, '../public/images')));
 } else {
-  app.use('/images', express.static(path.join(__dirname, '../client/images')));
+  app.use('/images', express.static(path.join(__dirname, '../client/public/images')));
 }
 
 
@@ -39,9 +41,23 @@ app.get('*', (req, res) => {
   }
 });
 
-db.once('open', () => {
+db.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+}).then(()=> {
   app.listen(PORT, () => {
-    console.log(`API server running on port ${PORT}!`);
-    console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
-  });
+        console.log(`API server running on port ${PORT}!`);
+        console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
+      });
+}).catch(err => {
+  console.log(err);
 });
+
+// db.once('open', () => {
+//   app.listen(PORT, () => {
+//     console.log(`API server running on port ${PORT}!`);
+//     console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
+//   });
+// });

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect("mongodb+srv://tcknyaj:01Elletc!@cluster0.ylckf.mongodb.net/mernshopping?retryWrites=true&w=majority", {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
@@ -8,4 +8,3 @@ mongoose.connect("mongodb+srv://tcknyaj:01Elletc!@cluster0.ylckf.mongodb.net/mer
 });
 
 module.exports = mongoose.connection;
-
