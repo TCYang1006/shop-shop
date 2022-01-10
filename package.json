@@ -3,6 +3,7 @@
   "name": "mern-shopping",
   "version": "1.0.0",
   "description": "",
+  "proxy": "http://localhost:3001/",
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",

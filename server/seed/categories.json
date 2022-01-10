@@ -1,0 +1,27 @@
+[
+    {
+        "_id" : ObjectId("61d398cbe9f23d68f3c34e71"),
+        "name" : "Food",
+        "__v" : 0
+    },
+    {
+        "_id" : ObjectId("61d398cbe9f23d68f3c34e72"),
+        "name" : "Household Supplies",
+        "__v" : 0
+    },
+    {
+        "_id" : ObjectId("61d398cbe9f23d68f3c34e73"),
+        "name" : "Electronics",
+        "__v" : 0
+    },
+    {
+        "_id" : ObjectId("61d398cbe9f23d68f3c34e74"),
+        "name" : "Books",
+        "__v" : 0
+    },
+    {
+        "_id" : ObjectId("61d398cbe9f23d68f3c34e75"),
+        "name" : "Toys",
+        "__v" : 0
+    }
+]

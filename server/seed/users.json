@@ -1,0 +1,56 @@
+[
+    {
+        "_id" : ObjectId("61d398cce9f23d68f3c34e86"),
+        "firstName" : "Pamela",
+        "lastName" : "Washington",
+        "email" : "pamela@testmail.com",
+        "password" : "$2b$10$mPLnrZODvdv4uI3NRP.8I.RE6o2DVZbEc5RXX8AAsNHP9XpUwwusS",
+        "orders" : [ 
+            {
+                "products" : [ 
+                    ObjectId("61d398cce9f23d68f3c34e78"), 
+                    ObjectId("61d398cce9f23d68f3c34e78"), 
+                    ObjectId("61d398cce9f23d68f3c34e79")
+                ],
+                "_id" : ObjectId("61d398cce9f23d68f3c34e87"),
+                "purchaseDate" : ISODate("2022-01-04T00:46:04.866Z")
+            }
+        ],
+        "__v" : 0
+    },
+    {
+        "_id" : ObjectId("61d398cce9f23d68f3c34e89"),
+        "firstName" : "Elijah",
+        "lastName" : "Holt",
+        "email" : "eholt@testmail.com",
+        "password" : "$2b$10$nBJmvIhJGvcrioxkZucrRObQDCaJ/UNMR3fzGX4E.WEwFkDDcxIkm",
+        "orders" : [],
+        "__v" : 0
+    },
+    {
+        "_id" : ObjectId("61d4cc0cad3143768fc09280"),
+        "firstName" : "General",
+        "lastName" : "Paxton",
+        "email" : "Gpaxton@email.com",
+        "password" : "$2b$10$huCZ/bpX.8Twyz2auSGMre9Bhm.lNvoqw7gEE/KTV0R0A.OFmcy7O",
+        "orders" : [],
+        "__v" : 0
+    },
+    {
+        "_id" : ObjectId("61da2154811359c9f0f71627"),
+        "firstName" : "James",
+        "lastName" : "Smith",
+        "email" : "jsmith12345@gmail.com",
+        "password" : "$2b$10$sDERwH2wENiy8ijiUsDHFeAlXxCphoWRnXYbFR3LYhXM5ffjVOdb6",
+        "orders" : [ 
+            {
+                "products" : [ 
+                    ObjectId("61d398cce9f23d68f3c34e7a")
+                ],
+                "_id" : ObjectId("61da2c2b811359c9f0f71659"),
+                "purchaseDate" : ISODate("2022-01-09T00:28:27.445Z")
+            }
+        ],
+        "__v" : 0
+    }
+]
